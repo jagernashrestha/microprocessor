@@ -1,0 +1,119 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+80861.exe -- emu8086 assembler version: 4.08  
+ 
+[ 3/1/2024  --  3:16:51 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       data segment
+[   2]    0000: 0A 0D 65 6E 74 65 72 20 74 68 65 20   msg1 db 10,13,'enter the string:$'
+                73 74 72 69 6E 67 3A 24             
+[   3]    0014: 0A 0D 73 74 72 69 6E 67 20 69 73 20   msg2 db 10,13,'string is palindrome'
+                70 61 6C 69 6E 64 72 6F 6D 65       
+[   4]    002A: 0A 0D 73 74 72 69 6E 67 20 69 73 6E   msg3 db 10,13,'string isnt palindrome:$ '
+                74 20 70 61 6C 69 6E 64 72 6F 6D 65 
+                3A 24 20                            
+[   5]    0045: 32                                    str1 db 50 dyp(0)
+[   6]        :                                       data ends
+[   7]        :                                       code segment
+[   8]        :                                       assume cs:code segment , ds:date segment
+[   9]    0050:                                       start:
+[  10]    0050: B8 00 00                              mov ax, data
+[  11]    0053: 8E D8                                 mov ds, ax
+[  12]    0055: BA 00 00                              lea dx ,msg1
+[  13]        :                                       
+[  14]    0058: B4 09                                 mov ah, 09h
+[  15]    005A: CD 21                                 int 21h
+[  16]        :                                       
+[  17]    005C: BE 45 00                              lea si,str1
+[  18]    005F: BF 45 00                              lea di, str1
+[  19]        :                                       
+[  20]    0062: B4 01                                 mov ah,01h
+[  21]        :                                       
+[  22]    0064: CD 21                                 next: int 21h
+[  23]    0066: 3C 0D                                 cmp al,0dh
+[  24]    0068: 74 05                                 je terminate
+[  25]    006A: 88 05                                 mov [di],al
+[  26]    006C: 47                                    inc di
+[  27]    006D: EB F5                                 jmp next
+[  28]        :                                       
+[  29]    006F:                                       terminate:
+[  30]    006F: B0 24                                 mov al ,'$'
+[  31]    0071: 88 05                                 mov [di],al
+[  32]    0073:                                       dothis:
+[  33]    0073: 4F                                    dec di
+[  34]    0074: 8A 04                                 mov al, [si]
+[  35]    0076: 38 05                                 cmp [di],al
+[  36]    0078: 75 0E                                 jne notpalindrome
+[  37]    007A: 46                                    inc si
+[  38]    007B: 3B F7                                 cmp si,di
+[  39]    007D: 7C F4                                 jl dothis
+[  40]    007F:                                       palindrome :
+[  41]    007F: B4 09                                 mov ah ,09h
+[  42]    0081: BA 14 00                              lea dx,msg2
+[  43]    0084: CD 21                                 int 21h
+[  44]    0086: EB 07                                 jmp yy
+[  45]        :                                       
+[  46]    0088:                                       notpalindrome:
+[  47]    0088: B4 09                                 mov ah,09h
+[  48]    008A: BA 2A 00                              lea dx,msg3
+[  49]    008D: CD 21                                 int 21h
+[  50]        :                                       
+[  51]    008F:                                       yy:
+[  52]    008F: B4 4C                                 mov ah,4ch
+[  53]    0091: CD 21                                 int 21h
+[  54]        :                                       code ends
+[  55]        :                                       end start
+[  56]        :                                       
+[  57]        :                                       
+[  58]        :                                       
+[  59]        :                                       
+[  60]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 93      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 00      -   SP - stack pointer (h.byte)
+0012: AD      -   check sum (l.byte)
+0013: 16      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 05      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 05      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

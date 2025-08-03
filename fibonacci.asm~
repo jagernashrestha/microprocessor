@@ -1,0 +1,16 @@
+;<fibonacci>
+ lxi h, 0100h;
+mvi a,00h
+mov m,a
+mvi b,01h
+inx h
+mov m,b
+mvi c,08h
+fib: add b
+	inx h
+	mov m,a
+	mov a,b
+	mov b,m
+	dcr c
+	jnz fib
+hlt

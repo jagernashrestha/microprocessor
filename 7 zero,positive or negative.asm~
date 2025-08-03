@@ -1,0 +1,28 @@
+;<find the number is zero, positive or negative>
+lxi h, 6000h;point location 6000h
+mov c,m;move memory from memory to c register
+mvi b,00h;initialize location b for +ve
+mvi d,00h;initialize location d for-ve
+mvi e,00h;initialize location e for zero
+inx h;incrementing h
+;1 for -ve number and 0 for +ve
+loop: mov a, m
+	cpi 00h ;compare immediate with accumulator
+	jz zero;jump on zero
+	ral; rotate accumulator left 
+	jc neg;jump on negative
+	inr b;increment b
+	jmp last;jump on last
+zero: inr e;increment e on zero
+	mov a,e
+	stax a,7000h
+	jmp last;jump on last
+neg: inr b;increment b
+	mov a,e
+	stax a
+last: inx h;increment h
+	dcr c;decrement c
+	mov a,c
+	stax a
+	jnz loop; jump on loop
+hlt

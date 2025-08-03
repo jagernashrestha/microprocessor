@@ -1,0 +1,21 @@
+< THE SYMBOL TABLE >  80861.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+MSG1                     	00000     	1         	VAR       	data      
+MSG2                     	00014     	1         	VAR       	data      
+MSG3                     	0002A     	1         	VAR       	data      
+STR1                     	00045     	1         	VAR       	data      
+CODE                     	00005     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	code      
+NEXT                     	00014     	-1        	LABEL     	code      
+TERMINATE                	0001F     	-1        	LABEL     	code      
+DOTHIS                   	00023     	-1        	LABEL     	code      
+PALINDROME               	0002F     	-1        	LABEL     	code      
+NOTPALINDROME            	00038     	-1        	LABEL     	code      
+YY                       	0003F     	-1        	LABEL     	code      
+===================================================================================================
+[ 3/1/2024  --  3:16:51 PM ] 
+< END >
+ 

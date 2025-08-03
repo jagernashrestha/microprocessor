@@ -1,0 +1,10 @@
+
+;<Program title>
+
+LDA 1000H
+MVI 02H
+MOV B,A
+LDA 1001H
+MVI 4AH
+ADD B
+hlt

@@ -1,0 +1,16 @@
+;<2's complement of 16-bit>
+lxi h, 1050h;point data in hl pair
+mov a,m;move data from memory to accumlulator
+mvi b,00h;counter register b
+cma;complement of number
+adi 01h;add 1 for 2's complement
+sta 1052h;store data in 1051h
+jnc loop; jump to loop
+inr b; increment b
+loop: lxi h, 1051h
+mov a,m;move data from memory to accumlulator
+cma;complement of number
+adi 01h;add 1 for 2's complement
+add b
+sta 1053h;store data in c053h
+hlt

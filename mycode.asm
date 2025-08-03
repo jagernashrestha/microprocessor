@@ -1,0 +1,32 @@
+data segment  
+    cnt db 10
+    fib db 10 dup(0)
+    data ends
+
+code segment  
+    assume cs:code segment, ds:data segment
+start:
+    mov ax,data
+    mov dx,ax
+    mov al,00h
+    lea si,fib
+    mov  [si],al
+    inc si
+    inc al
+    mov [si],al
+    mov cl,cnt
+    mov ch,00h
+    sub cx,02h 
+    l1:
+    mov al,[si-1]
+    add al,[si]
+    daa
+    inc si
+    mov [si],al
+    loop l1
+    
+    mov ah,4ch
+    int 21h  
+    code ends
+end start
+      
